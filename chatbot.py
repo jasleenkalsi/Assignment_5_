@@ -2,7 +2,7 @@
 Description: Chatbot application.  Allows user to perform 
 balance inquiries and make deposits to their accounts.
 Author: ACE Department
-Modified by: {Student Name}
+Modified by: Jasleen kaur
 Date: 2023-10-15
 Usage: From the console: python src/chatbot.py
 """
@@ -12,6 +12,18 @@ ACCOUNTS = {
     123456 : {"balance" : 1000.0},
     789012 : {"balance" : 2000.0}
 }
+
+from chatbot import  ACCOUNTS
+
+def get_account() -> int:
+    try:
+        account_number = int(input("Please enter your account number: "))
+        if account_number not in ACCOUNTS:
+            raise ValueError("Account number entered does not exist.")
+    except ValueError:
+        raise ValueError("Account number must be a whole number.")
+
+    return account_number
 
 VALID_TASKS = {"balance", "deposit", "exit"}
 
