@@ -43,3 +43,31 @@ def test_non_existing_account(self):
 
 if __name__ == "__main__":
     unittest.main()
+
+    
+from chatbot import get_account, get_balance 
+class TestGetBalance(unittest.TestCase):
+    def test_valid_account_balance(self):
+        # Arrange
+        account_number = 123456
+        expected_output = 'Your current balance for account 123456 is $1000.00.'
+
+        # Act
+        result = get_balance(account_number)
+
+        # Assert
+        self.assertEqual(result, expected_output)
+
+class TestGetBalance(unittest.TestCase):
+    def test_non_existing_account_balance(self):
+        # Arrange
+        account_number = 112233
+
+        # Act & Assert
+        with self.assertRaises(ValueError) as context:
+            get_balance(account_number)
+
+        self.assertEqual(str(context.exception), "Account number does not exist.")
+
+if __name__ == "__main__":
+    unittest.main()

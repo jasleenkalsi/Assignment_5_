@@ -25,6 +25,14 @@ def get_account() -> int:
 
     return account_number
 
+def get_balance(account: int) -> str:
+
+    if account not in ACCOUNTS:
+        raise ValueError("Account number does not exist.")
+    
+    balance = ACCOUNTS[account]
+    return f"Your current balance for account {account} is ${balance:.2f}."
+
 VALID_TASKS = {"balance", "deposit", "exit"}
 
 ## CODE REQUIRED FUNCTIONS STARTING HERE:
